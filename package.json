@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "style-lint": "stylelint 'src/**/*.css' --fix"
+    "style-lint": "stylelint 'src/**/*.css' --fix",
+    "lint": "npm run lint-staged"
   },
   "eslintConfig": {
     "extends": [
