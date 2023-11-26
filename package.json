@@ -7,6 +7,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.11.4",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
@@ -14,13 +18,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start  nodemon",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "style-lint": "stylelint 'src/**/*.css' --fix",
     "eslint": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "nodemon"
   },
   "eslintConfig": {
     "extends": [

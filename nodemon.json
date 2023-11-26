@@ -1,0 +1,18 @@
+{
+    "env": {
+      "NODE_ENV": "local"
+    },
+    "verbose": true,
+    "exec": "node --inspect -r  ./server/app.js",
+    "events": {
+      "restart": "echo 'Notification: App restarted due to: '$FILENAME''"
+    },
+    "delay": "2000",
+    "ext": "ts,js",
+    "watch": [
+      "./server/**"
+    ],
+    "ignore": [
+      "server/views/**"
+    ]
+  }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from 'antd'
 const InitCretet = () => {
     const [count, setCount] = useState(0)
@@ -8,10 +8,20 @@ const InitCretet = () => {
     const reduce = () => {
         setCount(count - 1)
     }
-    let i = 0
-    let i1 = 0
-    let i4 = 2
-    console.log((i1 = i1 ? 'i1' : i))
+    useEffect(() => {
+        fetch('http://localhost:3080/file', {
+            method: 'post',
+            body: JSON.stringify({ name: '奥铃', age: 28 }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then((res) => {
+                return res.json()
+            })
+            .then((res) => {
+                console.log(res, '输')
+            })
+    }, [])
+
     return (
         <>
             <div>测试{count}</div>
