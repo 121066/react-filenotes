@@ -4,8 +4,9 @@ const InitCretet = () => {
   const [count, setCount] = useState(0)
   let i = 0
   let i1 = 0
-  let i2 = i1 == i
-  console.log(i2)
+  if (i == i1) {
+    console.log('你话')
+  }
   return (
     <>
       <div>测试{count}</div>
