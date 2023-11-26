@@ -19,7 +19,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "style-lint": "stylelint 'src/**/*.css' --fix",
-    "lint": "npm run lint-staged"
+    "lint": "npm run lint-staged",
+    "eslint": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +60,7 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --fix",
-      "git add"
+      "git add ."
     ],
     "src/**/*.css": [
       "prettier --write",
