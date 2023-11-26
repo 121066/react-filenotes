@@ -29,4 +29,9 @@ module.exports = {
         'react/prop-types': 'off',
         'no-undef': 'off',
     },
+    settings: {
+        react: {
+            version: 'detect',
+        },
+    },
 }
