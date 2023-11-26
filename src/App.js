@@ -5,7 +5,7 @@ const InitCretet = () => {
   let i = 0
   let i1 = 0
   if (i == i1) {
-    console.log('你话')
+       console.log( '你话')
   }
   return (
     <>
