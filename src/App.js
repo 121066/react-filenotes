@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Button } from 'antd'
+import LayoutManager from './layout'
 const InitCretet = () => {
     const [count, setCount] = useState(0)
     const add = () => {
@@ -37,7 +38,7 @@ const InitCretet = () => {
 function App() {
     return (
         <div className="App">
-            <InitCretet></InitCretet>
+            <LayoutManager></LayoutManager>
         </div>
     )
 }
