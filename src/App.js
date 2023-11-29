@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Button } from 'antd'
 import LayoutManager from './layout'
+import { RouterProvider } from 'react-router-dom'
+import router from './router'
 const InitCretet = () => {
     const [count, setCount] = useState(0)
     const add = () => {
@@ -37,9 +39,11 @@ const InitCretet = () => {
 }
 function App() {
     return (
-        <div className="App">
-            <LayoutManager></LayoutManager>
-        </div>
+        <RouterProvider router={router}>
+            <div className="App">
+                <LayoutManager></LayoutManager>
+            </div>
+        </RouterProvider>
     )
 }
 
