@@ -1,7 +1,14 @@
+import HeaderTop from './Header'
+import SideItem from './Side'
+import ContentLayout from './Content'
 function LayoutManager() {
     return (
         <>
-            <div className=" bg-red-200">主体页面</div>
+            <div className=" bg-#eee">
+                <HeaderTop></HeaderTop>
+                <SideItem></SideItem>
+                <ContentLayout></ContentLayout>
+            </div>
         </>
     )
 }
