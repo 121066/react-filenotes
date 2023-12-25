@@ -3,6 +3,10 @@ import { Button } from 'antd'
 import LayoutManager from './layout'
 import { RouterProvider } from 'react-router-dom'
 import router from './router'
+import { Provider } from 'react-redux'
+import store from '@/redux/index.js'
+import './index.css'
+import 'normalize.css'
 const InitCretet = () => {
     const [count, setCount] = useState(0)
     const add = () => {
@@ -39,11 +43,13 @@ const InitCretet = () => {
 }
 function App() {
     return (
-        <RouterProvider router={router}>
-            <div className="App">
-                <LayoutManager></LayoutManager>
-            </div>
-        </RouterProvider>
+        <Provider store={store}>
+            <RouterProvider router={router}>
+                <div className="App">
+                    <LayoutManager></LayoutManager>
+                </div>
+            </RouterProvider>
+        </Provider>
     )
 }
 
