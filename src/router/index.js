@@ -12,7 +12,7 @@ const router = createBrowserRouter([
         children: [{ path: 'editorText', element: <EditorText></EditorText> }],
     },
     { path: '/home', element: <Home></Home> },
-    { path: '/files', element: <FileText></FileText> },
+    { path: '/files/:id', element: <FileText></FileText> },
     {
         path: '/formItem',
         element: (
