@@ -7,6 +7,11 @@ app.use(body.urlencoded({ extended: false }))
 app.use(body.json())
 app.use(cors())
 app.use(config.hotLinking)
+const i = 0,
+    i1 = 2
+if (i == i1) {
+    return 1
+}
 app.use('/assets', express.static('static'))
 let port = 3080
 app.get('/test', function (req, res) {
