@@ -35,8 +35,25 @@ function getWriteStream(path) {
     rs.on('close', (res) => {})
     return rs.pipe(res)
 }
+/**
+ * 防止静态资源盗用
+ */
+const hotLinking = (req, res, next) => {
+    const whiteList = ['localhost', '127.0.0.1', 'dbyxs.xyz']
+    const referer = req.get('referer')
+    if (referer) {
+        const { hostname } = new URL(referer)
+        if (!whiteList.includes(hostname)) {
+            res.status(401).send('Forbidden')
+            return
+        }
+    }
+    next()
+}
+
 module.exports = {
     setFileSystem,
     getFileSystem,
     getWriteStream,
+    hotLinking,
 }

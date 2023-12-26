@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: 'chart',
+        path: '/chart',
         element: (
             <Suspense>
                 <Chart></Chart>
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: 'setting',
+        path: '/setting',
         element: (
             <Suspense>
                 <Settings></Settings>
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: 'goodslist',
+        path: '/goodslist',
         element: (
             <Suspense>
                 <GoodsList></GoodsList>

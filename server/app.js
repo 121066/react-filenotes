@@ -6,7 +6,8 @@ var cors = require('cors')
 app.use(body.urlencoded({ extended: false }))
 app.use(body.json())
 app.use(cors())
-
+app.use(config.hotLinking)
+app.use('/assets', express.static('static'))
 let port = 3080
 app.get('/test', function (req, res) {
     res.send('你还')

@@ -35,6 +35,7 @@ function FormItem(){
         </Form>
       <Button type="primary" onClick={(e)=>initClick('1',e)}>点击bind</Button>
       <Button type="primary" onClick={initClick.bind(this,1)}>点击</Button>
+      <Button type="primary" onClick={initClick('2')}>直接点击</Button>
     </div>
     </>
 }

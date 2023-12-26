@@ -1,5 +1,5 @@
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom'
-
+import './index.scss'
 function FileText() {
     const navigate = useNavigate()
     // console.log(navigate())
@@ -10,7 +10,7 @@ function FileText() {
     console.log(id)
     return (
         <>
-            <div>文本标签</div>
+            <div className="text">文本标签</div>
         </>
     )
 }
