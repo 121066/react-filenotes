@@ -29,6 +29,7 @@ module.exports = {
         'no-unused-vars': 'off',
         'react/prop-types': 'off',
         'no-undef': 'off',
+        eqeqeq: [2, 'always', { null: 'ignore' }],
     },
     settings: {
         react: {
