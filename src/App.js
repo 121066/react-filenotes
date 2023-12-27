@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react'
-import { Button } from 'antd'
+import { Button, ConfigProvider } from 'antd'
 import LayoutManager from './layout'
 import { RouterProvider } from 'react-router-dom'
 import router from './router'
 import { Provider } from 'react-redux'
 import store from '@/redux/index.js'
+import zhCN from 'antd/locale/zh_CN'
 import './index.css'
 import 'normalize.css'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+dayjs.locale('zh-cn')
+// import moment from 'moment'
+// import 'moment/locale/zh-cn'
+// moment.locale('zh-cn')
 const InitCretet = () => {
     const [count, setCount] = useState(0)
     const add = () => {
@@ -43,13 +50,15 @@ const InitCretet = () => {
 }
 function App() {
     return (
-        <Provider store={store}>
-            <RouterProvider router={router}>
-                <div className="App">
-                    <LayoutManager></LayoutManager>
-                </div>
-            </RouterProvider>
-        </Provider>
+        <ConfigProvider locale={zhCN}>
+            <Provider store={store}>
+                <RouterProvider router={router}>
+                    <div className="App">
+                        <LayoutManager></LayoutManager>
+                    </div>
+                </RouterProvider>
+            </Provider>
+        </ConfigProvider>
     )
 }
 
