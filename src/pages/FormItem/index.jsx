@@ -4,7 +4,7 @@ import {useState}from 'react'
 import './index.scss'
 function FormItem(){
     const [form] = Form.useForm();
-    const { Option } = Select;
+    const { Option } = Select
     const [count,setCount]=useState(0)
     const {RangePicker}=DatePicker
     const onFinish=(value)=>{

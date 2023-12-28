@@ -1,5 +1,6 @@
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom'
 import './index.scss'
+import FormItemList from '@/components/formItem'
 function FileText() {
     const navigate = useNavigate()
     // console.log(navigate())
@@ -11,6 +12,7 @@ function FileText() {
     return (
         <>
             <div className="text">文本标签</div>
+            <FormItemList></FormItemList>
         </>
     )
 }

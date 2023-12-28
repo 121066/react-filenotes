@@ -3,6 +3,11 @@ import { useEffect, useState } from 'react'
 
 function TableList(props) {
     let [dataList, SetDataList] = useState([])
+    const objText = {
+        1: '未开始',
+        2: '执行中',
+        3: '已完成',
+    }
     useEffect(() => {
         let arr = []
         for (let i = 0; i < 22; i++) {
@@ -17,7 +22,14 @@ function TableList(props) {
     }, [])
     const colums = [
         { title: '任务名称', dataIndex: 'taskName', key: 'taskName' },
-        { title: '任务状态', dataIndex: 'taskStatus', key: 'taskStatus' },
+        {
+            title: '任务状态',
+            dataIndex: 'taskStatus',
+            key: 'taskStatus',
+            render: (e) => {
+                return objText[e]
+            },
+        },
     ]
     const data = [{ taskName: '测试任务', taskStatus: '1', key: '1' }]
     const getTableList = (pageNo, pageSize) => {
