@@ -1,23 +1,17 @@
 import { Form, Input, Row, Col, Button, Select, DatePicker } from 'antd'
-function FormItemList() {
+function FormItemList(props) {
+    const { initFormData } = props
     const [form] = Form.useForm()
     const { Option } = Select
     const { RangePicker } = DatePicker
     const { TextArea } = Input
-    const opt = [
-        {
-            type: 'input',
-            name: 'taskName',
-            label: '任务名称',
-            size: 'mini',
-            span: 6,
-            options: [{ label: '添加', value: '1' }],
-            disabled: true,
-            rules: [{ required: true, message: '请输入验证码' }],
-        },
-    ]
+    const opt = props.opt || []
     const onFinish = (e) => {
-        console.log(e)
+        initFormData(e)
+    }
+    const reset = () => {
+        form.resetFields()
+        initFormData({})
     }
     return (
         <>
@@ -91,10 +85,15 @@ function FormItemList() {
                         }
                     })}
                     <Col span={6}>
-                        <Button type="primary" htmlType="submit">
+                        <Button
+                            className="mr-4"
+                            type="primary"
+                            htmlType="submit"
+                        >
                             提交
                         </Button>
-                        <Button type="primary">重置</Button>
+
+                        <Button type="primary" onClick={reset}>重置</Button>
                     </Col>
                 </Row>
             </Form>
