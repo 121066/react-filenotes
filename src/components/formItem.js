@@ -1,4 +1,5 @@
 import { Form, Input, Row, Col, Button, Select, DatePicker, Radio, TimePicker } from 'antd'
+import NumericInput from './NumericInput'
 function FormItemList(props) {
     const { initFormData, btnText } = props
 
@@ -12,7 +13,11 @@ function FormItemList(props) {
     }
     const reset = () => {
         form.resetFields()
-        // initFormData({})
+        // initFormData({
+        //     assistanceType: '', assistanceNum: '',
+        //     assistance: 2, buyType: 2, activityEndDate: '',
+        //     activityStartDate: '', activityTime: [], activityName: ''
+        // })
     }
     const onChange = (e) => {
         console.log(e, '数据')
@@ -130,6 +135,18 @@ function FormItemList(props) {
                                         rules={item.rules}
                                     >
                                         <item.Slot></item.Slot>
+
+                                    </Form.Item>
+                                </Col>
+                            )
+                        } else if (item.type === 'numberInput') {
+                            return (
+                                <Col span={item.span} key={index}>
+                                    <Form.Item name={item.name || 'numberInput'}
+                                        label={item.label}
+                                        rules={item.rules || []}
+                                    >
+                                        <NumericInput></NumericInput>
 
                                     </Form.Item>
                                 </Col>

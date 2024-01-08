@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import FormItemList from '../../components/formItem'
 import './index.css'
 import NumericInput from 'components/NumericInput'
-import moment from 'moment'
 import { message, Card } from 'antd'
 const opt = [
     {
@@ -12,7 +11,19 @@ const opt = [
         size: 'mini',
         span: 24,
         value: '',
-        rules: [{ required: true, message: '请输入活动名称' }, { max: 40, message: '活动名称最长为40' }],
+        rules: [{ required: true, message: '请输入活动名称' }, { max: 40, message: '活动名称最长为40' }, {
+            validator: (rule, value, callback) => {
+                let str = value + ''
+                let objStr = {}
+                for (let i = 0; i < str.length; i++) {
+                    objStr[str[i]] = true
+                }
+                if (Object.keys(objStr).length !== str.length) {
+                    callback('活动名称有重复文案请修改')
+                }
+                callback()
+            }
+        }],
     },
     {
         type: 'slot',
@@ -58,7 +69,7 @@ const opt = [
                         width: 80
                     }}
                         value={minute}
-                        onChange={setMinute}></NumericInput><span className='ml-2 mr-2'>分</span>
+                        onChange={setMinute}></NumericInput><span className='ml-2 mr-2'>分钟</span>
                 </>
             }
         }
@@ -101,7 +112,7 @@ const opt = [
         rules: [{ required: true, message: '请选择是否允许自己助力' }]
     },
     {
-        type: 'input',
+        type: 'numberInput',
         name: 'assistanceNum',
         label: '助力人数',
         size: 'mini',
@@ -123,7 +134,6 @@ function GoodsList() {
     const [messageApi, contextHolder] = message.useMessage();
     const [opts, setOpt] = useState(opt)
     const initFormData = (fieldsValue) => {
-        const { activityStartDate, activityEndDate } = fieldsValue
         const values = {
             ...fieldsValue,
             'activityEndDate': fieldsValue['activityEndDate'].format('YYYY-MM-DD HH:mm:ss'),
@@ -139,6 +149,7 @@ function GoodsList() {
                 type: 'error',
                 content: '活动开始时间需要小于活动结束时间',
             });
+            return
         }
         console.log(values, '表单数据')
         // 活动开始时间需要小于活动结束时间 
