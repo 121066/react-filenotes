@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import FormItemList from '../../components/formItem'
 import './index.css'
 import NumericInput from 'components/NumericInput'
-import { Input } from 'postcss'
+import moment from 'moment'
+import { message, Card } from 'antd'
 const opt = [
     {
         type: 'input',
@@ -25,8 +26,10 @@ const opt = [
                 if (!check) {
                     callback("请输入助力有效期");
                     return;
+                } else {
+                    callback()
                 }
-                callback()
+
             }
         },],
         Slot: (props) => {
@@ -75,12 +78,7 @@ const opt = [
         size: 'mini',
         span: 24,
         format: 'YYYY-MM-DD HH:mm:ss',
-        rules: [{ required: true, message: '请输入活动结束时间' }, {
-            validator: (rule, value, callback) => {
-                console.log(value.day, value.month, value.year)
-                callback()
-            }
-        }]
+        rules: [{ required: true, message: '请输入活动结束时间' },]
     },
     {
         type: 'radio',
@@ -109,20 +107,54 @@ const opt = [
         size: 'mini',
         span: 24,
         rules: [{ required: true, message: '请输入助力人数' },]
+    },
+    {
+        type: 'select',
+        name: 'assistanceType',
+        label: '助力类型',
+        size: 'mini',
+        span: 24,
+        rules: [{ required: true, message: '请选择助力类型' }],
+        options: [{ label: '固定金额', value: 1 }, { label: '固定比例', value: 2 }, { label: '随机立减', value: 3 }]
     }
 ]
 
 function GoodsList() {
+    const [messageApi, contextHolder] = message.useMessage();
     const [opts, setOpt] = useState(opt)
-    const initFormData = (e) => {
-        console.log(e)
+    const initFormData = (fieldsValue) => {
+        const { activityStartDate, activityEndDate } = fieldsValue
+        const values = {
+            ...fieldsValue,
+            'activityEndDate': fieldsValue['activityEndDate'].format('YYYY-MM-DD HH:mm:ss'),
+            'activityStartDate': fieldsValue['activityStartDate'].format('YYYY-MM-DD HH:mm:ss'),
+            'day': fieldsValue['activityTime'][0],// 天
+            'hour': fieldsValue['activityTime'][1],// 时
+            'minute': fieldsValue['activityTime'][2]
+        };
+        let end = new Date(values.activityEndDate).getTime()
+        let start = new Date(values.activityStartDate).getTime()
+        if (start > end) {
+            messageApi.open({
+                type: 'error',
+                content: '活动开始时间需要小于活动结束时间',
+            });
+        }
+        console.log(values, '表单数据')
+        // 活动开始时间需要小于活动结束时间 
     }
     const btnText = ['保存', '取消']
     return (
         <>
-            <div className='box'>
-                <FormItemList btnText={btnText} initFormData={initFormData} opt={opts}></FormItemList>
+            {contextHolder}
+
+            <div className='box '>
+                <Card>
+                    <FormItemList btnText={btnText} initFormData={initFormData} opt={opts}></FormItemList>
+                </Card>
             </div>
+
+
         </>
     )
 }

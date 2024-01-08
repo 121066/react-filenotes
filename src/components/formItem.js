@@ -12,7 +12,7 @@ function FormItemList(props) {
     }
     const reset = () => {
         form.resetFields()
-        initFormData({})
+        // initFormData({})
     }
     const onChange = (e) => {
         console.log(e, '数据')
@@ -21,6 +21,7 @@ function FormItemList(props) {
     return (
         <>
             <Form form={form} onFinish={onFinish} validateTrigger="onBlur" fields={opt}
+
             >
                 <Row gutter={24}>
                     {opt.map((item, index) => {
@@ -51,7 +52,7 @@ function FormItemList(props) {
                                             {item.options.map((Item, count) => {
                                                 return (
                                                     <>
-                                                        <Option
+                                                        <Option Option
                                                             value={Item.value}
                                                         >
                                                             {Item.label}
@@ -135,7 +136,7 @@ function FormItemList(props) {
                             )
                         }
                     })}
-                    <Col span={6}>
+                    <Col span={12}>
                         <Button
                             className="mr-4"
                             type="primary"
