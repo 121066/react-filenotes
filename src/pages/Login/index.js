@@ -9,7 +9,7 @@ function Login() {
     const onFinish = async (value) => {
         console.log(value, 'value')
         await dispatch(fetchLogin(value))
-        navigate('/')
+        navigate('/goodslist')
         message.success('登录成功')
     }
     return (

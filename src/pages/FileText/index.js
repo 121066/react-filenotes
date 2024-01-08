@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom'
 import './index.scss'
-import FormItemList from '@/components/formItem'
+import FormItemList from '../../components/formItem'
 import { useEffect, useState } from 'react'
 import { Button } from 'antd'
 const opt = [
