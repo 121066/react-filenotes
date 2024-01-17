@@ -1,7 +1,8 @@
 import { useNavigate, useSearchParams, useParams } from 'react-router-dom'
 import './index.scss'
-import FormItemList from '../../components/formItem'
-import { useEffect, useState } from 'react'
+// import FormItemList from '../../components/formItem'
+import { useEffect, useState, useRef, forwardRef } from 'react'
+import ItemListText from './ItemListText'
 import { Button } from 'antd'
 const opt = [
     {
@@ -26,42 +27,65 @@ function ItemList() {
     const [count, setCount] = useState(0)
     useEffect(() => {
         console.log('执行一次', count)
+        return () => {
+            console.log('销毁')
+        }
     }, [])
     return <>测试useEffect1</>
 }
-function ItemLists() {
-    const [count, setCount] = useState(0)
-    useEffect(() => {
-        console.log('测试useEffect2', count)
-    })
-    return <>测试useEffect2</>
-}
+// const ItemLists = forwardRef(() => {
+//     const [count, setCount] = useState(0)
+//     useEffect(() => {
+//         console.log('测试useEffect2', count)
+//         return () => {
+//             console.log('销毁测试useEffect2')
+//         }
+//     })
+//     return <>
+//         <div>测试useEffect2</div>
+//         <span>span元素</span>
+//     </>
+// })
 function FileText() {
     const [opts, setOpt] = useState(opt)
     const navigate = useNavigate()
+    const refs = useRef(null)
     // console.log(navigate())
-    const [searchParams] = useSearchParams()
-    const ids = searchParams.get('id') || ''
-    console.log(ids)
+    // const [searchParams] = useSearchParams()
+    // const ids = searchParams.get('id') || ''
+    // console.log(ids)
     let { id } = useParams()
-    console.log(id)
+    // console.log(id)
     const initFormData = (e) => {
         console.log(e)
     }
     const [count, setCount] = useState(0)
+    const [countIndex, setCountIndex] = useState(0)
     const addInit = () => {
-        setCount((e) => e + 1)
+        // setCount((e) => e + 1)
+        console.log(refs)
+        setTimeout(() => {
+            setCountIndex(countIndex + 1)
+            setCount((e) => e + 1)
+        }, 3000)
     }
     const [flag, setFlag] = useState(false)
+    useEffect(() => {
+
+    }, [])
+    //  <FormItemList initFormData={initFormData} opt={opts}></FormItemList>
     return (
         <>
             <div className="text">文本标签</div>
+            <h1>{countIndex}countIndex</h1>
             <Button onClick={addInit}>点击加{count}</Button>
-            <FormItemList initFormData={initFormData} opt={opts}></FormItemList>
-            <ItemLists></ItemLists>
-            <ItemList></ItemList>
-            {flag && <h1>欢迎回来</h1>}
-            {!flag && <h1>请登录</h1>}
+            <ItemListText ref={refs}></ItemListText>
+            {flag && <h1>欢迎回来
+                <ItemListText ></ItemListText>
+            </h1>}
+            {!flag && <h1>请登录
+                <ItemList></ItemList>
+            </h1>}
             <Button type='primary' onClick={() => setFlag(!flag)}>{flag ? '退出' : '登录'}</Button>
         </>
     )

@@ -53,18 +53,22 @@ function FormItemList(props) {
                                         label={item.label || '选择器'}
                                         rules={item.rules}
                                     >
-                                        <Select>
-                                            {item.options.map((Item, count) => {
+                                        <Select options={(item.options.map((Item, count) => ({
+                                            value: Item.value,
+                                            label: Item.label
+                                        })))}>
+                                            {/* {item.options.map((Item, count) => {
                                                 return (
                                                     <>
                                                         <Option Option
                                                             value={Item.value}
+                                                            key={count}
                                                         >
                                                             {Item.label}
                                                         </Option>
                                                     </>
                                                 )
-                                            })}
+                                            })} */}
                                         </Select>
                                     </Form.Item>
                                 </Col>
