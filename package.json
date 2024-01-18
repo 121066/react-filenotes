@@ -89,5 +89,8 @@
       "prettier --write",
       "stylelint --config stylelint.config.js --fix"
     ]
+  },
+  "engines": {
+    "node": ">=16.18.1"
   }
 }
