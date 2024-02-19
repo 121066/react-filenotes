@@ -1,5 +1,6 @@
 import { Navigate } from 'react-router-dom'
-const { getToken } = require('util')
+const { getToken } = require('../util')
+console.log(getToken(), '?????')
 function AuthRoute({ children }) {
     const token = getToken()
     if (token) {

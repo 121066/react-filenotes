@@ -4,7 +4,7 @@ import LayoutManager from '../layout'
 import { createBrowserRouter } from 'react-router-dom'
 import EditorText from '../pages/EditorText'
 import { Suspense, lazy } from 'react'
-import AuthRoute from 'components/AuthRoute'
+import AuthRoute from '../components/AuthRoute'
 const Login = lazy(() => import('../pages/Login')) // 登录模块
 const FormItem = lazy(() => import('../pages/FormItem')) // 表单模块
 const Settings = lazy(() => import('../pages/Setting')) //设置模块
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         children: [{ path: 'editorText', element: <EditorText></EditorText> }],
     },
     { path: '/home', element: <Home></Home> },
-    { path: '/files/:id', element: <FileText></FileText> },
+    { path: '/files/:id', element: <LayoutManager></LayoutManager>, children: [{ path: '/files/:id', element: <FileText></FileText> }] },
     {
         path: '/formItem',
         element: (

@@ -5,7 +5,7 @@ const userStore = createSlice({
     name: 'user',
     initialState: {
         token: getToken() || '',
-        userInfo: {},
+        userInfo: { a: 1 },
     },
     // 同步修改方法
     reducers: {
@@ -20,10 +20,14 @@ const userStore = createSlice({
             state.userInfo = {}
             removeToken()
         },
+        getUserInfo(state, action) {
+            return state
+        }
     },
 })
+const userInfos = (state) => state.user
 // 解构出方法
-const { setTokens, setUserInfo, clearUserInfo } = userStore.actions
+const { setTokens, setUserInfo, clearUserInfo, getUserInfo } = userStore.actions
 // 解构出reducer函数
 const userReducer = userStore.reducer
 // 异步登录
@@ -49,5 +53,5 @@ const fetchRemoveUserInfo = (loginForm) => {
         dispatch(clearUserInfo())
     }
 }
-export { fetchLogin }
+export { fetchLogin, userInfos }
 export default userReducer
