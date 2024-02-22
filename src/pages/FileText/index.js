@@ -7,6 +7,8 @@ import { Button } from 'antd'
 import { userInfos, fetchUserInfo } from '../../redux/module/user'
 import { useSelector, useDispatch } from 'react-redux'
 import { useOutsideClick } from 'hooks'
+import { init } from 'constants'
+
 const opt = [
     {
         type: 'input',

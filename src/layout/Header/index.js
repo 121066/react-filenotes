@@ -1,7 +1,9 @@
 function HeaderTop() {
     return (
         <>
-            <div>头部</div>
+            <div className="  m-2  font-bold text-3xl">
+                头部
+            </div>
         </>
     )
 }

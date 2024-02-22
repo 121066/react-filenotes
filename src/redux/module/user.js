@@ -53,5 +53,5 @@ const fetchRemoveUserInfo = (loginForm) => {
         dispatch(clearUserInfo())
     }
 }
-export { fetchLogin, userInfos }
+export { fetchLogin, userInfos, fetchUserInfo, fetchRemoveUserInfo }
 export default userReducer

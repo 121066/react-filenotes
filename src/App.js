@@ -49,6 +49,7 @@ const InitCretet = () => {
     )
 }
 function App() {
+    console.log('执行1')
     return (
         <ConfigProvider locale={zhCN}>
             <Provider store={store}>
