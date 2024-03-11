@@ -1,4 +1,4 @@
-console.log('执行2')
+
 export const init = [12]
 export const element = document.createElement('span')
 export const extractNumbersAndChars = (str) => {

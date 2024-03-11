@@ -3,12 +3,12 @@ import './index.scss'
 // import FormItemList from '../../components/formItem'
 import { useEffect, useState, useRef, forwardRef } from 'react'
 import ItemListText from './ItemListText'
-import { Button } from 'antd'
+import { Button, Input } from 'antd'
 import { userInfos, fetchUserInfo } from '../../redux/module/user'
 import { useSelector, useDispatch } from 'react-redux'
 import { useOutsideClick } from 'hooks'
 import { init } from 'constants'
-
+import TextArea from '@hi-ui/textarea'
 const opt = [
     {
         type: 'input',
@@ -69,7 +69,16 @@ function ClcikElement() {
         <div className='element' ref={ref}>点击</div>
     </>
 }
+function InputAtra(props) {
+    const { placeholder } = props
+    return <>
+        <TextArea placeholder={placeholder}></TextArea>
+    </>
+}
+
 function FileText() {
+    const [placeholder, setPlacelohder] = useState('请输入')
+    const [value, setValue] = useState('')
     const [opts, setOpt] = useState(opt)
     const navigate = useNavigate()
     const refs = useRef(null)
@@ -91,14 +100,20 @@ function FileText() {
             setCountIndex(countIndex + 1)
             setCount((e) => e + 1)
         }, 3000)
+        setPlacelohder('placelohder select')
     }
     const [flag, setFlag] = useState(false)
     useEffect(() => {
 
     }, [])
+
     //  <FormItemList initFormData={initFormData} opt={opts}></FormItemList>
     return (
         <>
+            <Input type="textarea" value={value} placeholder={placeholder}></Input>
+            <InputAtra placeholder={placeholder}></InputAtra>
+            -----------------------------------------------------
+            {count}
             <div className="text">文本标签</div>
             <h1>{countIndex}countIndex</h1>
             <Button onClick={addInit}>点击加{count}</Button>
