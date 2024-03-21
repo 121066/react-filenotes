@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import FormItemList from '../../components/formItem'
 import './index.css'
 import NumericInput from 'components/NumericInput'
@@ -45,6 +45,7 @@ const opt = [
         },],
         Slot: (props) => {
             const { onChange, value } = props
+            console.log(props, value)
             {
                 const [day, setDay] = useState('');
                 const [hour, setHour] = useState('');
@@ -133,6 +134,7 @@ const opt = [
 function GoodsList() {
     const [messageApi, contextHolder] = message.useMessage();
     const [opts, setOpt] = useState(opt)
+    const formRef = useRef(null)
     const initFormData = (fieldsValue) => {
         const values = {
             ...fieldsValue,
