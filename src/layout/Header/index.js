@@ -1,6 +1,7 @@
 import { Button } from "antd"
 import { useState } from "react"
 import { element, extractNumbersAndChars } from "constants"
+import './index.scss'
 const initHTML = (html, value) => {
 
     let arr = extractNumbersAndChars('总金额100，共2件2020-12-01 00:12:12',)
@@ -21,10 +22,10 @@ function HeaderTop() {
     }
     return (
         <>
-            <div className="  m-2  font-bold text-3xl" id="html">
-                {initHTML()}
+            <div className="  m-2   " id="html">
+                {/* {initHTML()} */}
                 {/* {initObj[0]} */}
-                <Button onClick={getInit}>点击{count}</Button>
+                <div className="header"></div>
             </div>
         </>
     )

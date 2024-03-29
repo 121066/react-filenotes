@@ -10,6 +10,7 @@ const FormItem = lazy(() => import('../pages/FormItem')) // 表单模块
 const Settings = lazy(() => import('../pages/Setting')) //设置模块
 const GoodsList = lazy(() => import('../pages/GoodsList')) //商品模块
 const Chart = lazy(() => import('../pages/Chart')) //图表模块
+const Search = lazy(() => import('../pages/Search')) // 高阶搜索
 const router = createBrowserRouter([
     {
         path: '/',
@@ -53,6 +54,15 @@ const router = createBrowserRouter([
                 <GoodsList></GoodsList>
             </Suspense>
         ),
+    },
+    {
+        path: '/search',
+        element: (
+            <Suspense>
+
+                <Search></Search>
+            </Suspense>
+        )
     },
     {
         path: '/login',

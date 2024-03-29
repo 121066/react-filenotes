@@ -1,0 +1,33 @@
+.search{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 8px 0;
+    .left{
+        width: 240px;
+    }
+    .right{
+        width: 100px;
+        position: relative;
+    }
+    .card_list{
+        position: absolute;
+        width: 500px;
+        min-height: 240px;
+        border-radius: 4px;
+        box-shadow: 3px 3px 5px #eee;
+        background-color: #fff;
+        left: -390px;
+        top: 37px;
+        .card_title{
+            height: 40px;
+            border-bottom: 1px solid #eee;
+            padding: 0 12px;
+        }
+       .list{
+       min-height: 200px;
+       }
+    }
+}
