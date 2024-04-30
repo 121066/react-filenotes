@@ -1,0 +1,13 @@
+.fly-img-box {
+	position: fixed;
+	margin-top: 0;
+	margin-left: 0;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	z-index: 9999;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}

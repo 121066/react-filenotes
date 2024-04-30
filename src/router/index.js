@@ -11,6 +11,7 @@ const Settings = lazy(() => import('../pages/Setting')) //设置模块
 const GoodsList = lazy(() => import('../pages/GoodsList')) //商品模块
 const Chart = lazy(() => import('../pages/Chart')) //图表模块
 const Search = lazy(() => import('../pages/Search')) // 高阶搜索
+// const FormTable = lazy(() => import('../pages/FormTable')) //表格表单
 const router = createBrowserRouter([
     {
         path: '/',
@@ -72,5 +73,13 @@ const router = createBrowserRouter([
             </Suspense>
         ),
     },
+    // {
+    //     path: '/formTabel',
+    //     element: (
+    //         <Suspense>
+    //             <FormTable></FormTable>
+    //         </Suspense>
+    //     )
+    // }
 ])
 export default router

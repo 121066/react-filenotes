@@ -1,6 +1,7 @@
 import { Button, Input } from 'antd'
 import './index.scss'
 import { useState } from 'react'
+import Fly from '@/components/Fly'
 import {
     UpOutlined,
     DownOutlined,
@@ -37,6 +38,23 @@ function ItemList(props) {
             </div>
         </>
     )
+}
+const addCart = (e) => {
+    Fly.init({
+        src: 'https://gips3.baidu.com/it/u=716775754,726286767&fm=3028&app=3028&f=PNG&fmt=auto&q=100&size=f84_84',
+        start: {
+            left: e.clientX,
+            top: e.clientY,
+        },
+        end: {
+            left: document.querySelector('#cart').getBoundingClientRect().left,
+            top: document.querySelector('#cart').getBoundingClientRect().top,
+            width: 30,
+            height: 30,
+        },
+        speed: 1,
+        vertex_Rtop: 100,
+    })
 }
 function Search() {
     const [downIcon, setDownIcon] = useState(false)
@@ -77,6 +95,17 @@ function Search() {
                         </CartList>
                     )}
                 </div>
+                <Button
+                    type="primary"
+                    onClick={(e) => {
+                        addCart(e)
+                    }}
+                >
+                    加入购物车
+                </Button>
+                <Button type="primary" id="cart">
+                    购物车
+                </Button>
             </div>
         </>
     )

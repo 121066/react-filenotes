@@ -1,5 +1,6 @@
 import { Button } from "antd"
 import { useMessage } from "hooks/useMessage"
+import TableForm from "./TableForm"
 const InitText = () => {
     const { message } = useMessage()
     console.log(message)
@@ -47,6 +48,7 @@ function EditorText() {
             <Button type="primary" onClick={sendMsg}>点击发送消息</Button>
             <InitText></InitText>
             <UncontrolledForm></UncontrolledForm>
+            <TableForm></TableForm>
         </>
     )
 }
