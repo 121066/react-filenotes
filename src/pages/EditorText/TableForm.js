@@ -48,7 +48,16 @@ const TableForm = () => {
             console.log('验证未通过的表单错误信息:', errorInfo);
         });
     };
-
+    const EditableRow = () => {
+        return (
+            <div></div>
+        )
+    }
+    const EditableCell = () => {
+        return (
+            <div></div>
+        )
+    }
     return (
         <div>
             <Table
